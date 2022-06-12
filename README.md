@@ -59,6 +59,7 @@ Performance difference? Zero. Zero cost abstractions make this possible.
 <a href="https://opensource.org/licenses/MIT">
   <img align="right" height="96" alt="MIT License" src="docs/mit.svg" />
 </a>
+
 The files included in this repository are licensed under the
 [MIT License](https://opensource.org/licenses/MIT).
 
