@@ -56,6 +56,7 @@ Performance difference? Zero. Zero cost abstractions make this possible.
 * *(Optional)* Doxygen to generate documentation.
 
 ## License
+
 <a href="https://opensource.org/licenses/MIT">
   <img align="right" height="96" alt="MIT License" src="docs/mit.svg" />
 </a>
