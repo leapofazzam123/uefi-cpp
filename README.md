@@ -1,60 +1,56 @@
-# UEFI++
-## An object-oriented wrapper for UEFI
-
-**Note**: **I am no longer maintaining this project, instead
-  I am working on [an equivalent library][wrap] for the [Rust][rust] programming language.**
-
-[wrap]: https://github.com/GabrielMajeri/uefi-rs
-[rust]: https://www.rust-lang.org/en-US/
+# uefi-cpp (originally UEFI++)
+## A simple C++ library for interfacing with UEFI
 
 This project is a C++ wrapper for the UEFI specification, intended for people who write UEFI applications (OS loaders, shells, etc.)
 
 This wrapper supports both 32 and 64 bit UEFI architectures.
 
-The project is composed of two parts:
-- The headers in the `UEFI` folder, which contain the base structures from the UEFI specification.
-- The headers in the `UEFI++` folder, which contain some classes to make UEFI easier to use.
-
 **The current version is based on Version 2.6 of the UEFI specification, available [here](http://www.uefi.org/specifications).**
+
+# Differences between the original library
+- Merged UEFI and UEFI++ into one header library
+- Renamed all camelCase function names to snake_case
+- Added some missing or unfinished stuff
+- Added CMake build support
 
 # Example
 Here's some code that uses the old, C-style API of the specification:
 
 ```c
-systemTable->ConOut->OutputString(systemTable->ConOut, L"Hello UEFI!");
+system_table->ConOut->OutputString(system_table->ConOut, L"Hello UEFI!");
 ```
 
 Here's some code that uses the new C++ API:
 
 ```c++
-systemTable.consoleOut.outputString(u"Hello UEFI!");
+system_table.console_out.output_string(u"Hello UEFI!");
 ```
 
 And here's one that's even more modern:
 
 ```c++
 // Set the stream's output.
-out.setOutput(*systemTable.consoleOut);
+output.set_output(*system_table.console_out);
 
-out << "Hello UEFI!";
+output << "Hello UEFI!";
 ```
 
 Performance difference? Zero. Zero cost abstractions make this possible.
 
 # Features
-- Uses modern C++14 features (constexpr, static_assert, strongly typed enums).
+- Uses modern C++17 features.
 - Mainly intended for UEFI applications, not tested for UEFI drivers.
 - Relies on some C/C++ headers, but does not require a hosted standard library.
 
 # Required software
-* C++14 compatible compiler (Clang, GCC).
-* A C++14 standard library (including the C headers). This wrapper only uses non-hosted functions from the standard lib, therefore it doesn't require a runtime. Some of the required headers:
+* C++17 compatible compiler (Clang, GCC).
+* A C++17 standard library (including the C headers). This wrapper only uses non-hosted functions from the standard lib, therefore it doesn't require a runtime. Some of the required headers:
   - `<cstdint>`: for cross-architecture integer types.
   - `<cstddef>`: for size_t.
   - `<type_traits>`: for some template metaprogramming and static assertions.
   - `<utility>`: for some utility functions (e.g. std::swap()).
 
-* *(Optional)* QEmu with OVMF to be able to test UEFI apps in a virtual machine.
+* *(Optional)* QEMU with OVMF to be able to test UEFI apps in a virtual machine.
 * *(Optional)* Doxygen to generate documentation.
 
 # License
