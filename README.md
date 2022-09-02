@@ -1,7 +1,7 @@
 # uefi-cpp
 ## A simple C++ library for interfacing with UEFI
 
-> This is a fork of the original [UEFI++](https://github.com/GabrielMajeri/uefi-cpp) 
+> This is a fork of the original [UEFI++](https://github.com/GabrielMajeri/uefi-cpp). The original owner abandoned the original UEFI++ to work on uefi-rs.
 
 This project is a C++ wrapper for the UEFI specification, intended for people who write UEFI applications (OS loaders, shells, etc.)
 
@@ -11,7 +11,6 @@ This wrapper supports both 32 and 64 bit UEFI architectures.
 
 ## Differences between the original library
 - Merged UEFI and UEFI++ into one header library
-- Renamed all camelCase function names to snake_case
 - Added some missing or unfinished stuff
 - Added CMake build support
 
@@ -25,14 +24,14 @@ system_table->ConOut->OutputString(system_table->ConOut, L"Hello UEFI!");
 Here's some code that uses the new C++ API:
 
 ```c++
-system_table.console_out.output_string(u"Hello UEFI!");
+system_table.console_out.outputString(u"Hello UEFI!");
 ```
 
 And here's one that's even more modern:
 
 ```c++
 // Set the stream's output.
-output.set_output(*system_table.console_out);
+output.setOutput(*system_table.console_out);
 
 output << "Hello UEFI!";
 ```
