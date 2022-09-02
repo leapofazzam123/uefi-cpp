@@ -4,6 +4,7 @@ Standard: c++17
 UseTab: Never
 IndentWidth: 4
 TabWidth: 4
+ContinuationIndentWidth: 0
 
 AllowShortIfStatementsOnASingleLine: false
 AllowShortLambdasOnASingleLine: None
@@ -15,5 +16,6 @@ ColumnLimit: 0
 AccessModifierOffset: -4
 NamespaceIndentation: All
 
+AlignEscapedNewlines: DontAlign
 FixNamespaceComments: true
 SpaceBeforeInheritanceColon: true

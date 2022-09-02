@@ -4,14 +4,14 @@
 
 namespace Uefi {
     /// Sets the high-order bit of a number.
-    constexpr std::uint64_t makeErrorCode(std::uint64_t value) {
+    constexpr uint64_t makeErrorCode(uint64_t value) {
         return value | (1ULL << 63);
     }
 
     /// UEFI interfaces return a Status code for success, errors, and warnings, respectively.
     /// Taken from "Appendix D Status Codes" of the UEFI specification.
     // TODO: add more
-    enum class Status : std::uint64_t {
+    enum class Status : uint64_t {
         /// The operation completed successfully.
         Success = 0,
         /// The image failed to load.
@@ -33,6 +33,6 @@ namespace Uefi {
 
     /// Error codes have the high-order bit set.
     constexpr bool isErrorCode(Status code) {
-        return ((static_cast<std::uint64_t>(code) >> 63) & 1) != 0U;
+        return ((static_cast<uint64_t>(code) >> 63) & 1) != 0U;
     }
 } // namespace Uefi

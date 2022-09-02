@@ -5,7 +5,7 @@
 #include "signature.h"
 
 namespace Uefi {
-    using Crc32 = std::uint32_t;
+    using Crc32 = uint32_t;
     struct TableHeader {
         /// A 64-bit signature that identifies the type of table that follows.
         Signature signature;
@@ -14,13 +14,13 @@ namespace Uefi {
         Revision revision;
 
         /// The size, in bytes, of the entire table including this structure.
-        std::uint32_t size;
+        uint32_t size;
 
         /// The 32-bit CRC for the entire table.
         /// This value is computed by setting this field to 0, and computing the 32-bit CRC for the whole table.
         Crc32 crc32;
 
         /// Reserved field that must be set to 0.
-        std::uint32_t reserved;
+        uint32_t reserved;
     };
 } // namespace Uefi

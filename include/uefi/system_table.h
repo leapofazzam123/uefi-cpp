@@ -37,7 +37,7 @@ namespace Uefi {
         RuntimeServices* runtime_services;
         BootServices* boot_services;
 
-        std::size_t table_entry_count;
+        size_t table_entry_count;
         ConfigurationTable* configuration_table;
     };
 } // namespace Uefi

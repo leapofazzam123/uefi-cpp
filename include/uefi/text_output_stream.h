@@ -17,7 +17,7 @@ namespace Uefi {
         SimpleTextOutputProtocol* output;
 
         bool alpha;
-        std::uint8_t base;
+        uint8_t base;
 
         char _padding[6];
         // Since static constructors require runtime support, it's better for users to just call initialize().
@@ -38,7 +38,7 @@ namespace Uefi {
             output->clearScreen();
         }
 
-        void setNumberBase(std::uint8_t b) {
+        void setNumberBase(uint8_t b) {
             base = b;
         }
 
@@ -47,8 +47,8 @@ namespace Uefi {
             return *this;
         }
 
-        TextOutputStream& operator<<(std::uint16_t n) {
-            return *this << static_cast<std::uint64_t>(n);
+        TextOutputStream& operator<<(uint16_t n) {
+            return *this << static_cast<uint64_t>(n);
         }
 
         TextOutputStream& operator<<(char16_t* msg) {
@@ -57,7 +57,7 @@ namespace Uefi {
 
         /// Prints a number in the specified base to `stream`.
         /// Base should be above 2, and no bigger than 36 (otherwise it would start running out of letters).
-        static void printNumber(TextOutputStream& stream, std::uint64_t number) {
+        static void printNumber(TextOutputStream& stream, uint64_t number) {
             auto base = stream.base;
 
             if (base < 2 || base > 36)
@@ -93,7 +93,7 @@ namespace Uefi {
             }
 
             while (number != 0U) {
-                std::uint8_t value = (number % base);
+                uint8_t value = (number % base);
 
                 // If it's a digit.
                 if (value <= 9)
@@ -127,13 +127,13 @@ namespace Uefi {
             return *this << (value ? u"1" : u"0");
         }
 
-        TextOutputStream& operator<<(std::uint64_t n) {
+        TextOutputStream& operator<<(uint64_t n) {
             printNumber(*this, n);
             return *this;
         }
 
         TextOutputStream& operator<<(Status status) {
-            auto code = static_cast<std::uint64_t>(status);
+            auto code = static_cast<uint64_t>(status);
 
             // Clear the high bit.
             code &= ~(1ULL << 63);
