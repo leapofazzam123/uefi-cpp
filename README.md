@@ -24,7 +24,7 @@ system_table->ConOut->OutputString(system_table->ConOut, L"Hello UEFI!");
 Here's some code that uses the new C++ API:
 
 ```c++
-system_able.console_out.outputString(u"Hello UEFI!");
+system_table.console_out.outputString(u"Hello UEFI!");
 ```
 
 And here's one that's even more modern:
